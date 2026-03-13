@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduvos APS Calculator - Calculate Your Admission Points</title>
+    <meta name="description" content="Calculate your Admission Point Score (APS) for Eduvos applications. Easy-to-use calculator based on NSC results.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <h1>Eduvos APS Calculator</h1>
+                <p class="subtitle">Calculate Your Admission Point Score</p>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Information Section -->
+            <section class="info-section">
+                <div class="info-card">
+                    <h2>What is an APS?</h2>
+                    <p>The Admission Point Score (APS) is calculated from your final NSC (National Senior Certificate) results. Your APS is the sum of your ratings for your six best subjects, excluding Life Orientation.</p>
+                    
+                    <div class="rating-table">
+                        <h3>Rating Scale (NSC)</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Percentage</th>
+                                    <th>Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>80 - 100%</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>70 - 79%</td>
+                                    <td>6</td>
+                                </tr>
+                                <tr>
+                                    <td>60 - 69%</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>50 - 59%</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>40 - 49%</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>30 - 39%</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>0 - 29%</td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="admission-info">
+                        <h3>Eduvos Admission Requirements</h3>
+                        <ul>
+                            <li>Minimum APS varies by qualification (typically 18-28)</li>
+                            <li>NSC with Bachelor's Pass or Diploma Pass</li>
+                            <li>Specific subject requirements may apply</li>
+                            <li>English proficiency required</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculator Section -->
+            <section class="calculator-section">
+                <div class="calculator-card">
+                    <h2>Calculate Your APS</h2>
+                    <p class="instruction">Enter your percentage for each subject (0-100). The calculator will use your best 6 subjects, excluding Life Orientation.</p>
+                    
+                    <form id="apsForm">
+                        <div class="subjects-grid">
+                            <div class="subject-input">
+                                <label for="subject1">Subject 1 *</label>
+                                <input type="number" id="subject1" name="subject1" min="0" max="100" placeholder="Enter %">
+                                <span class="rating" id="rating1"></span>
+                            </div>
+                            <div class="subject-input">
+                                <label for="subject2">Subject 2 *</label>
+                                <input type="number" id="subject2" name="subject2" min="0" max="100" placeholder="Enter %">
+                                <span class="rating" id="rating2"></span>
+                            </div>
+                            <div class="subject-input">
+                                <label for="subject3">Subject 3 *</label>
+                                <input type="number" id="subject3" name="subject3" min="0" max="100" placeholder="Enter %">
+                                <span class="rating" id="rating3"></span>
+                            </div>
+                            <div class="subject-input">
+                                <label for="subject4">Subject 4 *</label>
+                                <input type="number" id="subject4" name="subject4" min="0" max="100" placeholder="Enter %">
+                                <span class="rating" id="rating4"></span>
+                            </div>
+                            <div class="subject-input">
+                                <label for="subject5">Subject 5 *</label>
+                                <input type="number" id="subject5" name="subject5" min="0" max="100" placeholder="Enter %">
+                                <span class="rating" id="rating5"></span>
+                            </div>
+                            <div class="subject-input">
+                                <label for="subject6">Subject 6 *</label>
+                                <input type="number" id="subject6" name="subject6" min="0" max="100" placeholder="Enter %">
+                                <span class="rating" id="rating6"></span>
+                            </div>
+                            <div class="subject-input">
+                                <label for="subject7">Subject 7 (Optional)</label>
+                                <input type="number" id="subject7" name="subject7" min="0" max="100" placeholder="Enter %">
+                                <span class="rating" id="rating7"></span>
+                            </div>
+                        </div>
+
+                        <button type="button" id="calculateBtn" class="btn btn-primary">Calculate APS</button>
+                        <button type="button" id="resetBtn" class="btn btn-secondary">Reset</button>
+                    </form>
+
+                    <div id="result" class="result-section" style="display: none;">
+                        <h3>Your Results</h3>
+                        <div class="aps-display">
+                            <span class="aps-label">Total APS:</span>
+                            <span class="aps-score" id="apsScore">0</span>
+                        </div>
+                        <div id="subjectBreakdown" class="breakdown"></div>
+                        <div class="eligibility" id="eligibilityMessage"></div>
+                        <button type="button" id="saveResultBtn" class="btn btn-primary">Save & Get More Info</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lead Capture Section -->
+            <section class="lead-section" id="leadSection" style="display: none;">
+                <div class="lead-card">
+                    <h2>Get Your Personalized Admission Guide</h2>
+                    <p>Enter your details below and we'll send you information about programs that match your APS score.</p>
+                    
+                    <form id="leadForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="interestedProgram">Interested Program</label>
+                                <select id="interestedProgram" name="interestedProgram">
+                                    <option value="">Select a program</option>
+                                    <option value="business">Business Management</option>
+                                    <option value="it">Information Technology</option>
+                                    <option value="creative">Creative Arts & Design</option>
+                                    <option value="education">Education</option>
+                                    <option value="health">Health Sciences</option>
+                                    <option value="law">Law</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="campus">Preferred Campus</label>
+                                <select id="campus" name="campus">
+                                    <option value="">Select a campus</option>
+                                    <option value="pretoria">Pretoria</option>
+                                    <option value="midrand">Midrand</option>
+                                    <option value="johannesburg">Johannesburg</option>
+                                    <option value="cape-town">Cape Town</option>
+                                    <option value="durban">Durban</option>
+                                    <option value="port-elizabeth">Port Elizabeth</option>
+                                    <option value="online">Online Learning</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="consent">
+                            <label>
+                                <input type="checkbox" id="consent" name="consent" required>
+                                I consent to Eduvos contacting me about educational opportunities *
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+                    <div id="thankYou" class="thank-you" style="display: none;">
+                        <h3>Thank You!</h3>
+                        <p>Your information has been received. An Eduvos admissions counselor will contact you shortly with personalized information about programs that match your APS score.</p>
+                        <button type="button" id="newCalculationBtn" class="btn btn-secondary">Calculate Another APS</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3>What subjects count towards my APS?</h3>
+                        <p>Your six best subjects, excluding Life Orientation, count towards your APS. This means you can have up to 7 subjects, and we'll automatically calculate using the best 6.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>What APS do I need for Eduvos?</h3>
+                        <p>Different qualifications require different APS scores. Bachelor's degrees typically require 23-28 APS, while diplomas may require 18-22 APS. Contact Eduvos for specific program requirements.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can I apply with a lower APS?</h3>
+                        <p>Some programs may have flexible admission criteria. Contact Eduvos admissions to discuss your options and alternative pathways.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>How accurate is this calculator?</h3>
+                        <p>This calculator follows the official NSC rating scale. Your final APS will be calculated by Eduvos admissions based on your official results.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Eduvos APS Calculator. This is an unofficial calculator tool.</p>
+            <p>For official admissions information, visit <a href="https://www.eduvos.com" target="_blank">www.eduvos.com</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
