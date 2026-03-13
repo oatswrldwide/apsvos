@@ -20,12 +20,27 @@
 
 ## Deployment Options
 
-### Option 1: GitHub Pages (Recommended)
+### Option 1: GitHub Pages (Current Deployment) ⭐
+**Live URL**: [https://oatswrldwide.github.io/apsvos/](https://oatswrldwide.github.io/apsvos/)
+
+This repository is configured with automatic GitHub Pages deployment via GitHub Actions.
+
+#### Automatic Deployment
+- The site automatically deploys when changes are pushed to `main` or `copilot/create-aps-calculator` branches
+- GitHub Actions workflow: `.github/workflows/deploy.yml`
+- No manual steps required after pushing code
+
+#### Manual GitHub Pages Setup (if needed)
 1. Go to repository Settings → Pages
-2. Select branch: `main` (or `copilot/create-aps-calculator`)
-3. Select folder: `/ (root)`
-4. Click Save
-5. Your site will be available at: `https://oatswrldwide.github.io/apsvos/`
+2. Select Source: "GitHub Actions"
+3. The workflow will automatically deploy on the next push
+4. Your site will be available at: `https://oatswrldwide.github.io/apsvos/`
+
+#### Custom Domain (Optional)
+1. Go to repository Settings → Pages
+2. Add your custom domain (e.g., `aps.eduvos.com`)
+3. Configure DNS records as instructed by GitHub
+4. Enable HTTPS
 
 ### Option 2: Netlify
 1. Sign up at netlify.com

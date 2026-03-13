@@ -2,6 +2,12 @@
 
 A comprehensive Admission Point Score (APS) calculator designed for prospective Eduvos students. This tool helps students calculate their APS based on their National Senior Certificate (NSC) results and captures leads for admissions counseling.
 
+## 🌐 Live Demo
+
+**Visit the calculator**: [https://oatswrldwide.github.io/apsvos/](https://oatswrldwide.github.io/apsvos/)
+
+The calculator is deployed on GitHub Pages and automatically updates when changes are pushed to the repository.
+
 ## Features
 
 ### 🎯 APS Calculation
@@ -71,9 +77,14 @@ The application stores captured leads in the browser's localStorage. To access l
 
 ## Deployment
 
-### Static Hosting
-Deploy to any static hosting service:
-- GitHub Pages
+### GitHub Pages (Current Deployment)
+This project is automatically deployed to GitHub Pages via GitHub Actions:
+- **Live URL**: [https://oatswrldwide.github.io/apsvos/](https://oatswrldwide.github.io/apsvos/)
+- **Auto-deployment**: Triggered on push to `main` or `copilot/create-aps-calculator` branches
+- **Configuration**: See `.github/workflows/deploy.yml`
+
+### Alternative Static Hosting
+You can also deploy to:
 - Netlify
 - Vercel
 - AWS S3 + CloudFront
