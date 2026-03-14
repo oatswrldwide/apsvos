@@ -330,6 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.exportLeads = exportLeads;
     window.clearLeads = clearLeads;
     
-    console.log('%cEduvos APS Calculator Initialized', 'color: #0066cc; font-size: 16px; font-weight: bold;');
+    console.log('%cEduvos APS Calculator Initialized', 'color: #15305d; font-size: 16px; font-weight: bold;');
     console.log('%cAdmin functions available: viewLeads(), exportLeads(), clearLeads()', 'color: #666; font-style: italic;');
 });

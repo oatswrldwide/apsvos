@@ -6,9 +6,9 @@
 }
 
 :root {
-    --primary-color: #0066cc;
-    --secondary-color: #004c99;
-    --accent-color: #00a651;
+    --primary-color: #15305d;
+    --secondary-color: #374e75;
+    --accent-color: #15305d;
     --danger-color: #dc3545;
     --warning-color: #ffc107;
     --light-bg: #f8f9fa;
@@ -35,14 +35,32 @@ body {
 
 /* Header */
 header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: var(--white);
-    padding: 2rem 0;
-    box-shadow: var(--shadow);
+    padding: 3rem 0;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://www.eduvos.com/images/footer-new-2026.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
 }
 
 .header-content {
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 header h1 {
@@ -73,6 +91,7 @@ section {
     border-radius: 12px;
     padding: 2rem;
     box-shadow: var(--shadow);
+    border-top: 4px solid var(--primary-color);
 }
 
 .info-card h2,
@@ -222,7 +241,7 @@ section {
 .result-section {
     margin-top: 2rem;
     padding: 2rem;
-    background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+    background: linear-gradient(135deg, #e8eef5, #f0f4f8);
     border-radius: 12px;
     border-left: 5px solid var(--primary-color);
 }
@@ -284,9 +303,9 @@ section {
 }
 
 .eligibility.high {
-    background-color: #d4edda;
-    color: #155724;
-    border: 2px solid var(--accent-color);
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border: 2px solid #4caf50;
 }
 
 .eligibility.medium {
@@ -416,25 +435,43 @@ section {
 
 /* Footer */
 footer {
-    background-color: var(--text-dark);
+    background: var(--primary-color);
     color: var(--white);
-    padding: 2rem 0;
+    padding: 3rem 0;
     text-align: center;
     margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://www.eduvos.com/images/footer-new-2026.webp');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    z-index: 0;
 }
 
 footer p {
     margin: 0.5rem 0;
+    position: relative;
+    z-index: 1;
 }
 
 footer a {
-    color: var(--accent-color);
-    text-decoration: none;
+    color: var(--white);
+    text-decoration: underline;
     font-weight: 600;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    color: #f0f0f0;
 }
 
 /* Responsive Design */
