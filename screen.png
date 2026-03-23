@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eduvos Guided Matchmaker - Step 2</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&amp;family=Manrope:wght@400;500;600&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#aec6fd",
+              "on-primary-container": "#8199cc",
+              "tertiary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#aec6fd",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-container": "#15305d",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "surface-container": "#eeeeee",
+              "primary-fixed": "#d8e2ff",
+              "inverse-on-surface": "#f1f1f0",
+              "on-tertiary-fixed": "#001a41",
+              "outline": "#747780",
+              "surface-bright": "#f9f9f9",
+              "error": "#ba1a1a",
+              "primary-container": "#15305d",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#2e4674",
+              "on-secondary-fixed-variant": "#004c69",
+              "on-tertiary-container": "#8199cc",
+              "on-surface": "#1a1c1c",
+              "on-secondary-container": "#00516f",
+              "surface-tint": "#465e8e",
+              "inverse-surface": "#2f3131",
+              "surface": "#f9f9f9",
+              "background": "#f9f9f9",
+              "outline-variant": "#c4c6d0",
+              "secondary": "#00668a",
+              "surface-container-highest": "#e2e2e2",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed-dim": "#7bd0ff",
+              "on-error": "#ffffff",
+              "primary": "#001b42",
+              "on-surface-variant": "#44474f",
+              "surface-container-low": "#f4f3f3",
+              "surface-dim": "#dadada",
+              "on-secondary-fixed": "#001e2c",
+              "on-tertiary-fixed-variant": "#2e4674",
+              "secondary-fixed": "#c4e7ff",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#001a41",
+              "secondary-container": "#54c7ff",
+              "inverse-primary": "#aec6fd",
+              "tertiary": "#001b42",
+              "on-background": "#1a1c1c"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .editorial-text {
+            letter-spacing: -0.02em;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(0,26,65,0.06)]">
+<div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-[#001b42] font-headline tracking-tight">Eduvos</div>
+<div class="flex items-center gap-6">
+<span class="text-slate-500 font-label text-sm uppercase tracking-widest">Step 2 of 3</span>
+<button class="text-[#001b42] hover:opacity-80 transition-opacity flex items-center gap-1 group">
+<span class="font-label text-sm font-semibold">Exit</span>
+<span class="material-symbols-outlined text-xl transition-transform group-active:scale-90" data-icon="close">close</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-40 px-6 max-w-7xl mx-auto">
+<!-- Progress Bar (Tonal) -->
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden mb-16 max-w-3xl">
+<div class="h-full bg-secondary w-[66%] relative">
+<div class="absolute right-0 top-0 h-full w-4 bg-white/30 blur-sm"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+<!-- Left Column: Editorial Inquiry -->
+<div class="lg:col-span-5">
+<h1 class="font-headline text-primary editorial-text text-5xl lg:text-6xl mb-8 leading-[1.1]">
+                    What sparks your <br/> curiosity?
+                </h1>
+<p class="text-on-surface-variant text-lg lg:text-xl leading-relaxed max-w-md">
+                    Select the fields that resonate with your goals. Our Academic Concierge will curate a path specifically for your future.
+                </p>
+<div class="mt-12 flex flex-wrap gap-3">
+<!-- Interest Selection Cards (Asymmetric Chips) -->
+<button class="bg-secondary-fixed text-on-secondary-fixed-variant px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-sm outline-variant/15 border border-secondary transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="palette">palette</span>
+                        Creative Arts
+                    </button>
+<button class="bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-transparent">
+<span class="material-symbols-outlined text-lg" data-icon="terminal">terminal</span>
+                        Technology
+                    </button>
+<button class="bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-transparent">
+<span class="material-symbols-outlined text-lg" data-icon="trending_up">trending_up</span>
+                        Business
+                    </button>
+<button class="bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-transparent">
+<span class="material-symbols-outlined text-lg" data-icon="psychology">psychology</span>
+                        Humanities
+                    </button>
+<button class="bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-transparent">
+<span class="material-symbols-outlined text-lg" data-icon="science">science</span>
+                        Applied Science
+                    </button>
+</div>
+</div>
+<!-- Right Column: Curated Course Results (Bento/Layered) -->
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Course Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_40px_40px_-15px_rgba(0,26,65,0.04)] hover:shadow-[0_40px_40px_-15px_rgba(0,26,65,0.08)] transition-all group flex flex-col h-full">
+<div class="mb-6 flex justify-between items-start">
+<div class="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="brush">brush</span>
+</div>
+<span class="bg-primary/10 text-primary font-label text-[10px] uppercase font-bold px-3 py-1 rounded-full tracking-widest">Degree</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-3">BA in Graphic Design</h3>
+<p class="text-on-surface-variant font-body mb-8 text-sm leading-relaxed">
+                        Master visual communication and digital storytelling through industry-standard design principles.
+                    </p>
+<div class="mt-auto pt-4 flex items-center text-secondary font-bold text-sm gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_40px_40px_-15px_rgba(0,26,65,0.04)] hover:shadow-[0_40px_40px_-15px_rgba(0,26,65,0.08)] transition-all group flex flex-col h-full">
+<div class="mb-6 flex justify-between items-start">
+<div class="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="movie">movie</span>
+</div>
+<span class="bg-primary/10 text-primary font-label text-[10px] uppercase font-bold px-3 py-1 rounded-full tracking-widest">Higher Cert</span>
+</div>
+<h3 class="font-headline text-2xl text-primary mb-3">Film &amp; Media Studies</h3>
+<p class="text-on-surface-variant font-body mb-8 text-sm leading-relaxed">
+                        Step behind the lens and explore the art of cinematic production and media analysis.
+                    </p>
+<div class="mt-auto pt-4 flex items-center text-secondary font-bold text-sm gap-2">
+                        View Details
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Course Card 3 (Large/Featured Span) -->
+<div class="md:col-span-2 bg-gradient-to-br from-primary to-primary-container p-10 rounded-[2.5rem] text-white flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
+<div class="absolute -right-12 -top-12 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+<div class="z-10 flex-1">
+<div class="mb-4 inline-block bg-secondary px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Premium Choice</div>
+<h3 class="font-headline text-3xl mb-4 leading-tight">Bachelor of Arts <br/> in Creative Brand Communication</h3>
+<p class="text-on-primary-container/80 text-base max-w-md">
+                            The ultimate intersection of business strategy and creative execution for modern leaders.
+                        </p>
+</div>
+<div class="z-10 shrink-0">
+<div class="w-32 h-32 bg-white/10 backdrop-blur-md rounded-[2rem] flex items-center justify-center">
+<span class="material-symbols-outlined text-5xl" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-between items-center px-10 py-6 bg-[#f4f3f3] rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,26,65,0.04)] z-50">
+<button class="flex items-center gap-2 text-[#001b42] px-6 py-4 font-['Plus_Jakarta_Sans'] font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-98 transition-all">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+            Back
+        </button>
+<div class="hidden md:block h-1 w-24 bg-surface-container-highest rounded-full"></div>
+<button class="flex items-center gap-2 bg-gradient-to-br from-[#001b42] to-[#15305d] text-white px-8 py-4 rounded-xl shadow-lg font-['Plus_Jakarta_Sans'] font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-98 transition-all">
+            Next
+            <span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</nav>
+<!-- Content Decorative Background -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+<div class="absolute top-[20%] -left-[10%] w-[40rem] h-[40rem] bg-primary/2 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[10%] -right-[5%] w-[30rem] h-[30rem] bg-secondary/5 rounded-full blur-[100px]"></div>
+</div>
+</body></html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>APS Calculator | Eduvos Guided Matchmaker</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600&amp;family=Inter:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#aec6fd",
+              "on-primary-container": "#8199cc",
+              "tertiary-fixed": "#d8e2ff",
+              "tertiary-fixed-dim": "#aec6fd",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-container": "#15305d",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "surface-container": "#eeeeee",
+              "primary-fixed": "#d8e2ff",
+              "inverse-on-surface": "#f1f1f0",
+              "on-tertiary-fixed": "#001a41",
+              "outline": "#747780",
+              "surface-bright": "#f9f9f9",
+              "error": "#ba1a1a",
+              "primary-container": "#15305d",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#2e4674",
+              "on-secondary-fixed-variant": "#004c69",
+              "on-tertiary-container": "#8199cc",
+              "on-surface": "#1a1c1c",
+              "on-secondary-container": "#00516f",
+              "surface-tint": "#465e8e",
+              "inverse-surface": "#2f3131",
+              "surface": "#f9f9f9",
+              "background": "#f9f9f9",
+              "outline-variant": "#c4c6d0",
+              "secondary": "#00668a",
+              "surface-container-highest": "#e2e2e2",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed-dim": "#7bd0ff",
+              "on-error": "#ffffff",
+              "primary": "#001b42",
+              "on-surface-variant": "#44474f",
+              "surface-container-low": "#f4f3f3",
+              "surface-dim": "#dadada",
+              "on-secondary-fixed": "#001e2c",
+              "on-tertiary-fixed-variant": "#2e4674",
+              "secondary-fixed": "#c4e7ff",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#001a41",
+              "secondary-container": "#54c7ff",
+              "inverse-primary": "#aec6fd",
+              "tertiary": "#001b42",
+              "on-background": "#1a1c1c"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+            font-family: 'Manrope', sans-serif;
+        }
+        .editorial-shadow {
+            box-shadow: 0 40px 40px -15px rgba(0, 26, 65, 0.06);
+        }
+    </style>
+</head>
+<body class="min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Top Navigation Shell (Injected Styles from JSON) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(0,26,65,0.06)]">
+<div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-[#001b42] dark:text-white font-['Plus_Jakarta_Sans'] tracking-tight">Eduvos</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:text-[#001b42] transition-colors font-['Plus_Jakarta_Sans'] font-semibold flex items-center gap-2">
+                    Exit
+                    <span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-40 px-6 max-w-4xl mx-auto">
+<!-- Wizard Progress Bar (Tonal Progress Bar) -->
+<div class="mb-20 w-full">
+<div class="flex justify-between mb-4 items-end">
+<span class="font-label text-xs font-bold uppercase tracking-widest text-primary opacity-60">Step 1 of 3</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest text-primary">Academic Profile</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/3 rounded-full relative">
+<!-- Subtle pulse animation implied via visual styling -->
+<div class="absolute right-0 top-0 h-full w-8 bg-gradient-to-r from-transparent to-white/30"></div>
+</div>
+</div>
+</div>
+<!-- Editorial Hero Section -->
+<section class="mb-16">
+<h1 class="font-headline text-[3.5rem] leading-[1.1] font-extrabold text-primary tracking-tight mb-6">
+                Calculate your <span class="text-secondary">APS Score.</span>
+</h1>
+<p class="font-body text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+                Enter your Grade 11 or Grade 12 final results. Your Admission Point Score helps us match you with the right qualifications.
+            </p>
+</section>
+<!-- APS Calculator Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<!-- Input List Section -->
+<div class="md:col-span-8 space-y-4">
+<!-- Subject Rows -->
+<div class="bg-surface-container-lowest p-6 rounded-[2rem] editorial-shadow flex flex-col gap-6">
+<!-- Subject Item 1 (Mandatory) -->
+<div class="flex flex-col md:flex-row gap-4 items-center">
+<div class="flex-grow w-full">
+<label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Primary Language</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-lg" placeholder="e.g. English Home Language" type="text"/>
+</div>
+</div>
+<div class="w-full md:w-32">
+<label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mark %</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-headline font-bold text-center text-xl" placeholder="00" type="number"/>
+</div>
+</div>
+<!-- Subject Item 2 (Mandatory) -->
+<div class="flex flex-col md:flex-row gap-4 items-center">
+<div class="flex-grow w-full">
+<label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mathematics / Literacy</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-lg" placeholder="e.g. Mathematics" type="text"/>
+</div>
+</div>
+<div class="w-full md:w-32">
+<label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mark %</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-headline font-bold text-center text-xl" placeholder="00" type="number"/>
+</div>
+</div>
+<!-- Subject Item 3 (Mandatory) -->
+<div class="flex flex-col md:flex-row gap-4 items-center">
+<div class="flex-grow w-full">
+<label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Life Orientation</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-lg opacity-70" placeholder="Life Orientation" readonly="" type="text" value="Life Orientation"/>
+</div>
+</div>
+<div class="w-full md:w-32">
+<label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mark %</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-headline font-bold text-center text-xl" placeholder="00" type="number"/>
+</div>
+</div>
+<!-- Dynamic Row Placeholder -->
+<div class="pt-4 border-t border-surface-container-high">
+<button class="flex items-center gap-2 text-secondary font-bold font-body hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">add_circle</span>
+                            Add another subject
+                        </button>
+</div>
+</div>
+</div>
+<!-- Sticky Summary Sidebar -->
+<div class="md:col-span-4 sticky top-32">
+<div class="bg-primary text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+<!-- Background Pattern Decor -->
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
+<h3 class="font-label text-xs font-bold uppercase tracking-[0.2em] mb-8 text-secondary-container">Your Live Score</h3>
+<div class="flex flex-col items-center">
+<span class="font-headline text-8xl font-extrabold leading-none mb-2">24</span>
+<span class="font-label text-sm uppercase tracking-widest opacity-60">Current APS</span>
+</div>
+<div class="mt-10 pt-8 border-t border-white/10 space-y-4">
+<div class="flex justify-between items-center text-sm">
+<span class="opacity-70">Subjects Entered</span>
+<span class="font-bold">3 of 7</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="opacity-70">Degree Eligibility</span>
+<span class="font-bold text-secondary-container">Pending...</span>
+</div>
+</div>
+</div>
+<!-- Guidance Note -->
+<div class="mt-8 px-4 flex gap-4">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed">
+                        Eduvos calculates APS based on your top 6 subjects, excluding Life Orientation for certain qualifications.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mandatory Shared Component Styles) -->
+<footer class="fixed bottom-0 left-0 w-full flex justify-between items-center px-10 py-6 bg-[#f4f3f3] dark:bg-slate-900 z-50 rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,26,65,0.04)]">
+<!-- Inactive Action -->
+<button class="flex items-center gap-2 text-[#001b42] dark:text-slate-300 px-6 py-4 font-['Plus_Jakarta_Sans'] font-bold uppercase tracking-widest text-xs hover:brightness-110 transition-all active:scale-98">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+            Back
+        </button>
+<!-- Active Action (Next) -->
+<button class="flex items-center gap-2 bg-gradient-to-br from-[#001b42] to-[#15305d] text-white px-8 py-4 rounded-xl shadow-lg font-['Plus_Jakarta_Sans'] font-bold uppercase tracking-widest text-xs hover:brightness-110 transition-all active:scale-98">
+            Next
+            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</footer>
+<!-- Imagery Placeholder for Brand Feel (Abstract Texture) -->
+<div class="fixed top-0 right-0 -z-10 w-1/3 h-full overflow-hidden pointer-events-none opacity-40">
+<img alt="Abstract academic texture" class="w-full h-full object-cover" data-alt="Soft abstract blue and white gradient with organic shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ8Og4Q9zPGZaeqQkrofx0baqr4diZdVF5L61AvV017eU1mOEefcZZ-SjcDLgpp40NcFd7PoV56YMkVhbvOwbCzTDSVzy15Ml2wQOoSwAKtE7VXoPeSXjJ4BrhZ3Mj_jjtYMP3izX8uH9MD21dQG05e-w6GnOvUtKJtu7w3wtKsKdJl_dGsGP74u-R3527NaveZd8owzpbqtWnCo1p4E8fzkSLfXLN-DqWdJtSXrQewWp0zFgraiRzmRuktZCWgBXoBpwtmEo3_S6h"/>
+</div>
+</body></html>
