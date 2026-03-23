@@ -232,6 +232,15 @@
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
         <!-- Subject Input List -->
         <div class="md:col-span-8 space-y-4">
+          <!-- Degree Type Selector -->
+          <div class="bg-surface-container-lowest px-6 py-5 rounded-[2rem] editorial-shadow">
+            <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Target Programme</label>
+            <select id="degreeType" onchange="recalcLiveAps()" class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base">
+              <option value="general">General / Arts / Commerce</option>
+              <option value="cs">BSc Computer Science / IT</option>
+              <option value="bio">BSc Biomedicine / Biotechnology</option>
+            </select>
+          </div>
           <div id="subjectList" class="bg-surface-container-lowest p-6 rounded-[2rem] editorial-shadow flex flex-col gap-6">
 
             <!-- Subject Row: Primary Language -->
@@ -264,10 +273,10 @@
               </div>
             </div>
 
-            <!-- Subject Row: Life Orientation (excluded from APS) -->
+            <!-- Subject Row: Life Orientation (Eduvos: 3 pts if ≥ 40%) -->
             <div class="subject-row flex flex-col md:flex-row gap-4 items-end">
               <div class="flex-grow w-full">
-                <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Life Orientation <span class="normal-case opacity-60">(excluded from APS)</span></label>
+                <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Life Orientation <span class="normal-case opacity-60">(Eduvos: 3 pts if ≥ 40%)</span></label>
                 <input type="text" class="subj-name w-full bg-surface-container-low border-none rounded-xl px-4 py-4 outline-none font-body text-base opacity-60 cursor-default" value="Life Orientation" readonly/>
               </div>
               <div class="w-full md:w-28 flex-shrink-0">
@@ -275,7 +284,7 @@
                 <input type="number" min="0" max="100" class="subj-pct lo-pct w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-headline font-bold text-center text-lg" placeholder="0"/>
               </div>
               <div class="w-10 flex-shrink-0 pb-1 hidden md:flex items-center justify-center">
-                <span class="font-label text-xs font-bold text-outline w-6 text-center">—</span>
+                <span id="loRating" class="font-label text-xs font-bold text-secondary w-6 text-center">0</span>
               </div>
             </div>
 
@@ -313,6 +322,14 @@
                 <span id="subjCount" class="font-bold">0 of 2</span>
               </div>
               <div class="flex justify-between items-center text-sm">
+                <span class="opacity-70">Life Orientation</span>
+                <span id="loScore" class="font-bold text-secondary-container">+0</span>
+              </div>
+              <div class="flex justify-between items-center text-sm">
+                <span class="opacity-70">Doubling Bonus</span>
+                <span id="doublingBonus" class="font-bold text-secondary-container">+0</span>
+              </div>
+              <div class="flex justify-between items-center text-sm">
                 <span class="opacity-70">Degree Eligibility</span>
                 <span id="eligStatus" class="font-bold text-secondary-container">Pending...</span>
               </div>
@@ -322,7 +339,7 @@
           <div class="mt-8 px-4 flex gap-4">
             <span class="material-symbols-outlined text-secondary">info</span>
             <p class="font-body text-sm text-on-surface-variant leading-relaxed">
-              Eduvos calculates APS using your top 6 subjects, excluding Life Orientation.
+              Eduvos uses your top 6 subjects + Life Orientation (3 pts if ≥ 40%). For BSc CS and BSc Bio programmes, the two best relevant subjects are doubled.
             </p>
           </div>
         </div>
@@ -582,7 +599,7 @@
           <div class="flex items-end gap-6 mt-6 mb-4">
             <span id="finalAps" class="font-headline text-9xl font-extrabold leading-none">0</span>
             <div class="pb-4">
-              <span class="font-label text-sm uppercase tracking-widest opacity-60 block">out of 42</span>
+              <span class="font-label text-sm uppercase tracking-widest opacity-60 block">Eduvos APS</span>
               <span id="finalElig" class="font-headline text-xl font-bold mt-1 block text-secondary-container">Calculating...</span>
             </div>
           </div>
@@ -663,24 +680,64 @@
       if (pct >= 50) return 4;
       if (pct >= 40) return 3;
       if (pct >= 30) return 2;
-      return 1;
+      return 0;
     }
 
-    function getEligibilityText(score, short) {
-      if (score >= 28) return short ? 'Bachelor\'s Degree ✓' : '🎉 Excellent — qualifies for most Bachelor\'s degrees';
-      if (score >= 23) return short ? 'Bachelor\'s Degree ✓' : '✓ Qualifies for Bachelor\'s degree programmes';
-      if (score >= 18) return short ? 'Diploma ✓' : '✓ Qualifies for Diploma programmes';
-      if (score > 0)   return short ? 'Certificate / Foundation' : 'Contact admissions to explore your options';
-      return 'Pending...';
+    function getEligibilityText(score, degreeType, short) {
+      const isScience = (degreeType === 'cs' || degreeType === 'bio');
+      if (isScience) {
+        if (score >= 32) return short ? 'Bachelor\'s Degree ✓' : '🎉 You Qualify — Bachelor\'s Degree (Science/IT)';
+        if (score >= 17) return short ? 'Foundation / Pre-Degree' : '✓ Qualifies for Foundation / Pre-Degree Programme';
+        if (score >= 15) return short ? 'Higher Certificate ✓' : '✓ Qualifies for Higher Certificate';
+        if (score > 0)   return short ? 'Try a Pathway ›' : 'Contact Eduvos admissions to explore your options';
+        return 'Pending...';
+      } else {
+        if (score >= 25) return short ? 'Bachelor\'s Degree ✓' : '🎉 You Qualify — Bachelor\'s Degree (Arts/Commerce)';
+        if (score >= 17) return short ? 'Foundation / Pre-Degree' : '✓ Qualifies for Foundation / Pre-Degree Programme';
+        if (score >= 15) return short ? 'Higher Certificate ✓' : '✓ Qualifies for Higher Certificate';
+        if (score > 0)   return short ? 'Try a Pathway ›' : 'Contact Eduvos admissions to explore your options';
+        return 'Pending...';
+      }
+    }
+
+    // ─── Subject relevance helpers for degree-specific doubling ───────────
+    function isRelevantForCS(name) {
+      const n = name.toLowerCase();
+      return /\benglish\b/.test(n) ||
+             /\bmath/.test(n) ||
+             /\bcomputer\b/.test(n) ||
+             /\binformation\s+tech/.test(n) ||
+             /\bit\b/.test(n);
+    }
+
+    function isRelevantForBio(name) {
+      const n = name.toLowerCase();
+      return /\blife\s+sci/.test(n) ||
+             /\bmath/.test(n) ||
+             /\bchem/.test(n) ||
+             /\bphysics\b/.test(n) ||
+             /\bphysical\s+sci/.test(n);
+    }
+
+    function getDoublingBonus(subjects, degreeType) {
+      let relevant = [];
+      if (degreeType === 'cs') {
+        relevant = subjects.filter(s => isRelevantForCS(s.name));
+      } else if (degreeType === 'bio') {
+        relevant = subjects.filter(s => isRelevantForBio(s.name));
+      }
+      relevant.sort((a, b) => b.rating - a.rating);
+      return relevant.slice(0, 2).reduce((sum, s) => sum + s.rating, 0);
     }
 
     function recalcLiveAps() {
       const rows = document.querySelectorAll('#step-aps .subject-row');
-      let ratings = [];
+      let subjects = [];
+      let loPercent = null;
       let filledNonLO = 0;
       let totalNonLO = 0;
 
-      rows.forEach((row, idx) => {
+      rows.forEach((row) => {
         const nameInput = row.querySelector('.subj-name');
         const pctInput  = row.querySelector('.subj-pct');
         const ratingEl  = row.querySelector('.subj-rating');
@@ -698,23 +755,44 @@
         const pct = parseFloat(val);
         if (isNaN(pct)) return;
 
-        if (!isLO) {
+        if (isLO) {
+          loPercent = pct;
+          const lo = pct >= 40 ? 3 : 0;
+          const loRatingEl = document.getElementById('loRating');
+          if (loRatingEl) loRatingEl.textContent = lo;
+        } else {
           filledNonLO++;
           const r = pctToRating(pct);
           if (ratingEl) ratingEl.textContent = r;
-          ratings.push(r);
+          const name = nameInput ? nameInput.value.trim() : '';
+          subjects.push({ name, pct, rating: r });
         }
       });
 
-      // Best 6
-      ratings.sort((a, b) => b - a);
-      const best6 = ratings.slice(0, 6);
-      apsScore = best6.reduce((s, r) => s + r, 0);
+      // Best 6 non-LO subjects
+      subjects.sort((a, b) => b.rating - a.rating);
+      const best6 = subjects.slice(0, 6);
+      const base = best6.reduce((s, r) => s + r.rating, 0);
+
+      // Life Orientation: 3 pts if >= 40%, else 0
+      const lo = (loPercent !== null && loPercent >= 40) ? 3 : 0;
+
+      // Doubling bonus for selected degree type
+      const degreeTypeEl = document.getElementById('degreeType');
+      const degreeType = degreeTypeEl ? degreeTypeEl.value : 'general';
+      const bonus = getDoublingBonus(subjects, degreeType);
+
+      apsScore = base + lo + bonus;
 
       document.getElementById('liveAps').textContent = apsScore;
       document.getElementById('subjCount').textContent = `${filledNonLO} of ${totalNonLO}`;
 
-      document.getElementById('eligStatus').textContent = getEligibilityText(apsScore, true);
+      const loScoreEl = document.getElementById('loScore');
+      if (loScoreEl) loScoreEl.textContent = `+${lo}`;
+      const bonusEl = document.getElementById('doublingBonus');
+      if (bonusEl) bonusEl.textContent = `+${bonus}`;
+
+      document.getElementById('eligStatus').textContent = getEligibilityText(apsScore, degreeType, true);
     }
 
     // ─── Add Extra Subject Row ─────────────────────────────────────────────
@@ -827,33 +905,46 @@
       console.log('%cEduvos lead captured', 'color:#15305d;font-weight:bold', leadData);
 
       // Populate results step
+      const degreeTypeEl = document.getElementById('degreeType');
+      const degreeType = degreeTypeEl ? degreeTypeEl.value : 'general';
       document.getElementById('finalAps').textContent = apsScore;
-      document.getElementById('finalElig').textContent = getEligibilityText(apsScore, false);
+      document.getElementById('finalElig').textContent = getEligibilityText(apsScore, degreeType, false);
       document.getElementById('thankYouName').textContent =
         `Thank you, ${leadData.firstName}! Your profile has been received.`;
 
       // Build breakdown
       const rows = document.querySelectorAll('#step-aps .subject-row');
       let subjects = [];
+      let loPercent = null;
       rows.forEach(row => {
         const nameInput = row.querySelector('.subj-name');
         const pctInput = row.querySelector('.subj-pct');
         const isLO = pctInput && pctInput.classList.contains('lo-pct');
-        if (!pctInput || isLO) return;
+        if (!pctInput) return;
         const val = pctInput.value.trim();
         if (val === '') return;
         const pct = parseFloat(val);
-        if (!isNaN(pct)) {
+        if (isNaN(pct)) return;
+        if (isLO) {
+          loPercent = pct;
+        } else {
           const name = nameInput ? (nameInput.value.trim() || 'Subject') : 'Subject';
           subjects.push({ name, pct, rating: pctToRating(pct) });
         }
       });
       subjects.sort((a, b) => b.rating - a.rating);
       const best6 = subjects.slice(0, 6);
+      const lo = (loPercent !== null && loPercent >= 40) ? 3 : 0;
+      const bonus = getDoublingBonus(subjects, degreeType);
       const breakdownHtml = best6.map(s =>
-        `<span class="inline-block mr-4">${s.name}: <strong>${s.pct}%</strong> → Rating <strong>${s.rating}</strong></span>`
+        `<span class="inline-block mr-4">${s.name}: <strong>${s.pct}%</strong> → <strong>${s.rating} pts</strong></span>`
       ).join('');
-      document.getElementById('finalBreakdown').innerHTML = 'Best 6 subjects used: ' + breakdownHtml;
+      let fullBreakdown = 'Best 6 subjects: ' + breakdownHtml;
+      const degreeLabels = { cs: 'BSc CS', bio: 'BSc Bio', general: 'General' };
+      const degreeLabel = degreeLabels[degreeType] || 'General';
+      if (lo > 0) fullBreakdown += `<br/>Life Orientation: <strong>+${lo} pts</strong>`;
+      if (bonus > 0) fullBreakdown += `<br/>Doubling bonus (${degreeLabel}): <strong>+${bonus} pts</strong>`;
+      document.getElementById('finalBreakdown').innerHTML = fullBreakdown;
 
       goToStep(4);
     }
@@ -872,6 +963,14 @@
       document.querySelectorAll('#step-aps .subj-rating').forEach(el => el.textContent = '');
       document.getElementById('liveAps').textContent = '0';
       document.getElementById('eligStatus').textContent = 'Pending...';
+      const loRatingEl = document.getElementById('loRating');
+      if (loRatingEl) loRatingEl.textContent = '0';
+      const loScoreEl = document.getElementById('loScore');
+      if (loScoreEl) loScoreEl.textContent = '+0';
+      const bonusEl = document.getElementById('doublingBonus');
+      if (bonusEl) bonusEl.textContent = '+0';
+      const degreeTypeEl = document.getElementById('degreeType');
+      if (degreeTypeEl) degreeTypeEl.value = 'general';
       document.getElementById('leadForm').reset();
       document.querySelectorAll('.chip.selected').forEach(c => c.classList.remove('selected'));
 
