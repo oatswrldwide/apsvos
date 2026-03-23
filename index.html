@@ -1,264 +1,914 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="light" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eduvos APS Calculator - Calculate Your Admission Points</title>
-    <meta name="description" content="Calculate your Admission Point Score (APS) for Eduvos applications. Easy-to-use calculator based on NSC results.">
-    
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="16x16" href="https://www.eduvos.com/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://www.eduvos.com/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="https://www.eduvos.com/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="https://www.eduvos.com/android-icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="57x57" href="https://www.eduvos.com/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="https://www.eduvos.com/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://www.eduvos.com/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="https://www.eduvos.com/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://www.eduvos.com/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="https://www.eduvos.com/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="https://www.eduvos.com/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://www.eduvos.com/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://www.eduvos.com/apple-icon-180x180.png">
-    
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Eduvos Guided Matchmaker | APS Calculator</title>
+  <meta name="description" content="Calculate your Admission Point Score (APS) and find the perfect Eduvos programme for you."/>
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.eduvos.com/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.eduvos.com/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://www.eduvos.com/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.eduvos.com/apple-icon-180x180.png">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Manrope:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-fixed-dim": "#aec6fd",
+            "on-primary-container": "#8199cc",
+            "tertiary-fixed": "#d8e2ff",
+            "tertiary-fixed-dim": "#aec6fd",
+            "surface-container-high": "#e8e8e8",
+            "tertiary-container": "#15305d",
+            "on-secondary": "#ffffff",
+            "surface-variant": "#e2e2e2",
+            "surface-container": "#eeeeee",
+            "primary-fixed": "#d8e2ff",
+            "inverse-on-surface": "#f1f1f0",
+            "on-tertiary-fixed": "#001a41",
+            "outline": "#747780",
+            "surface-bright": "#f9f9f9",
+            "error": "#ba1a1a",
+            "primary-container": "#15305d",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#2e4674",
+            "on-secondary-fixed-variant": "#004c69",
+            "on-tertiary-container": "#8199cc",
+            "on-surface": "#1a1c1c",
+            "on-secondary-container": "#00516f",
+            "surface-tint": "#465e8e",
+            "inverse-surface": "#2f3131",
+            "surface": "#f9f9f9",
+            "background": "#f9f9f9",
+            "outline-variant": "#c4c6d0",
+            "secondary": "#00668a",
+            "surface-container-highest": "#e2e2e2",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#7bd0ff",
+            "on-error": "#ffffff",
+            "primary": "#001b42",
+            "on-surface-variant": "#44474f",
+            "surface-container-low": "#f4f3f3",
+            "surface-dim": "#dadada",
+            "on-secondary-fixed": "#001e2c",
+            "on-tertiary-fixed-variant": "#2e4674",
+            "secondary-fixed": "#c4e7ff",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-primary-fixed": "#001a41",
+            "secondary-container": "#54c7ff",
+            "inverse-primary": "#aec6fd",
+            "tertiary": "#001b42",
+            "on-background": "#1a1c1c"
+          },
+          fontFamily: {
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Manrope"],
+            "label": ["Inter"]
+          },
+          borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    body { font-family: 'Manrope', sans-serif; background-color: #f9f9f9; color: #1a1c1c; }
+    .editorial-shadow { box-shadow: 0 40px 40px -15px rgba(0,26,65,0.06); }
+    .glass-header { background-color: rgba(255,255,255,0.82); backdrop-filter: blur(24px); }
+    .cta-gradient { background: linear-gradient(135deg, #001b42 0%, #15305d 100%); }
+    .step { display: none; }
+    .step.active { display: block; }
+    .chip.selected { background-color: #c4e7ff; color: #004c69; border-color: #00668a; }
+  </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <h1>Eduvos APS Calculator</h1>
-                <p class="subtitle">Calculate Your Admission Point Score</p>
-            </div>
+<body class="min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed overflow-x-hidden">
+
+  <!-- ═══════════════════════════════════════════════════════
+       STEP 0 — WELCOME / LANDING  (from code (3).html)
+  ══════════════════════════════════════════════════════════ -->
+  <div id="step-welcome" class="step active min-h-screen flex flex-col">
+    <!-- Glass Header -->
+    <header class="fixed top-0 w-full z-50 glass-header editorial-shadow">
+      <div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold text-primary font-headline tracking-tight">Eduvos</div>
+        <div class="flex items-center gap-4">
+          <a href="https://www.eduvos.com" target="_blank" class="text-slate-500 hover:text-primary transition-colors font-headline font-semibold text-sm flex items-center gap-1 hover:opacity-80">
+            Main Site
+            <span class="material-symbols-outlined text-lg">open_in_new</span>
+          </a>
         </div>
+      </div>
     </header>
 
-    <main>
-        <div class="container">
-            <!-- Information Section -->
-            <section class="info-section">
-                <div class="info-card">
-                    <h2>What is an APS?</h2>
-                    <p>The Admission Point Score (APS) is calculated from your final NSC (National Senior Certificate) results. Your APS is the sum of your ratings for your six best subjects, excluding Life Orientation.</p>
-                    
-                    <div class="rating-table">
-                        <h3>Rating Scale (NSC)</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Percentage</th>
-                                    <th>Rating</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>80 - 100%</td>
-                                    <td>7</td>
-                                </tr>
-                                <tr>
-                                    <td>70 - 79%</td>
-                                    <td>6</td>
-                                </tr>
-                                <tr>
-                                    <td>60 - 69%</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>50 - 59%</td>
-                                    <td>4</td>
-                                </tr>
-                                <tr>
-                                    <td>40 - 49%</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>30 - 39%</td>
-                                    <td>2</td>
-                                </tr>
-                                <tr>
-                                    <td>0 - 29%</td>
-                                    <td>1</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="admission-info">
-                        <h3>Eduvos Admission Requirements</h3>
-                        <ul>
-                            <li>Minimum APS varies by qualification (typically 18-28)</li>
-                            <li>NSC with Bachelor's Pass or Diploma Pass</li>
-                            <li>Specific subject requirements may apply</li>
-                            <li>English proficiency required</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Calculator Section -->
-            <section class="calculator-section">
-                <div class="calculator-card">
-                    <h2>Calculate Your APS</h2>
-                    <p class="instruction">Enter your percentage for each subject (0-100). The calculator will use your best 6 subjects, excluding Life Orientation.</p>
-                    
-                    <form id="apsForm">
-                        <div class="subjects-grid">
-                            <div class="subject-input">
-                                <label for="subject1">Subject 1 *</label>
-                                <input type="number" id="subject1" name="subject1" min="0" max="100" placeholder="Enter %">
-                                <span class="rating" id="rating1"></span>
-                            </div>
-                            <div class="subject-input">
-                                <label for="subject2">Subject 2 *</label>
-                                <input type="number" id="subject2" name="subject2" min="0" max="100" placeholder="Enter %">
-                                <span class="rating" id="rating2"></span>
-                            </div>
-                            <div class="subject-input">
-                                <label for="subject3">Subject 3 *</label>
-                                <input type="number" id="subject3" name="subject3" min="0" max="100" placeholder="Enter %">
-                                <span class="rating" id="rating3"></span>
-                            </div>
-                            <div class="subject-input">
-                                <label for="subject4">Subject 4 *</label>
-                                <input type="number" id="subject4" name="subject4" min="0" max="100" placeholder="Enter %">
-                                <span class="rating" id="rating4"></span>
-                            </div>
-                            <div class="subject-input">
-                                <label for="subject5">Subject 5 *</label>
-                                <input type="number" id="subject5" name="subject5" min="0" max="100" placeholder="Enter %">
-                                <span class="rating" id="rating5"></span>
-                            </div>
-                            <div class="subject-input">
-                                <label for="subject6">Subject 6 *</label>
-                                <input type="number" id="subject6" name="subject6" min="0" max="100" placeholder="Enter %">
-                                <span class="rating" id="rating6"></span>
-                            </div>
-                            <div class="subject-input">
-                                <label for="subject7">Subject 7 (Optional)</label>
-                                <input type="number" id="subject7" name="subject7" min="0" max="100" placeholder="Enter %">
-                                <span class="rating" id="rating7"></span>
-                            </div>
-                        </div>
-
-                        <button type="button" id="calculateBtn" class="btn btn-primary">Calculate APS</button>
-                        <button type="button" id="resetBtn" class="btn btn-secondary">Reset</button>
-                    </form>
-
-                    <div id="result" class="result-section" style="display: none;">
-                        <h3>Your Results</h3>
-                        <div class="aps-display">
-                            <span class="aps-label">Total APS:</span>
-                            <span class="aps-score" id="apsScore">0</span>
-                        </div>
-                        <div id="subjectBreakdown" class="breakdown"></div>
-                        <div class="eligibility" id="eligibilityMessage"></div>
-                        <button type="button" id="saveResultBtn" class="btn btn-primary">Save & Get More Info</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Lead Capture Section -->
-            <section class="lead-section" id="leadSection" style="display: none;">
-                <div class="lead-card">
-                    <h2>Get Your Personalized Admission Guide</h2>
-                    <p>Enter your details below and we'll send you information about programs that match your APS score.</p>
-                    
-                    <form id="leadForm">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="interestedProgram">Interested Program</label>
-                                <select id="interestedProgram" name="interestedProgram">
-                                    <option value="">Select a program</option>
-                                    <option value="business">Business Management</option>
-                                    <option value="it">Information Technology</option>
-                                    <option value="creative">Creative Arts & Design</option>
-                                    <option value="education">Education</option>
-                                    <option value="health">Health Sciences</option>
-                                    <option value="law">Law</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group full-width">
-                                <label for="campus">Preferred Campus</label>
-                                <select id="campus" name="campus">
-                                    <option value="">Select a campus</option>
-                                    <option value="pretoria">Pretoria</option>
-                                    <option value="midrand">Midrand</option>
-                                    <option value="johannesburg">Johannesburg</option>
-                                    <option value="cape-town">Cape Town</option>
-                                    <option value="durban">Durban</option>
-                                    <option value="port-elizabeth">Port Elizabeth</option>
-                                    <option value="online">Online Learning</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="consent">
-                            <label>
-                                <input type="checkbox" id="consent" name="consent" required>
-                                I consent to Eduvos contacting me about educational opportunities *
-                            </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-
-                    <div id="thankYou" class="thank-you" style="display: none;">
-                        <h3>Thank You!</h3>
-                        <p>Your information has been received. An Eduvos admissions counselor will contact you shortly with personalized information about programs that match your APS score.</p>
-                        <button type="button" id="newCalculationBtn" class="btn btn-secondary">Calculate Another APS</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="faq-section">
-                <h2>Frequently Asked Questions</h2>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <h3>What subjects count towards my APS?</h3>
-                        <p>Your six best subjects, excluding Life Orientation, count towards your APS. This means you can have up to 7 subjects, and we'll automatically calculate using the best 6.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>What APS do I need for Eduvos?</h3>
-                        <p>Different qualifications require different APS scores. Bachelor's degrees typically require 23-28 APS, while diplomas may require 18-22 APS. Contact Eduvos for specific program requirements.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>Can I apply with a lower APS?</h3>
-                        <p>Some programs may have flexible admission criteria. Contact Eduvos admissions to discuss your options and alternative pathways.</p>
-                    </div>
-                    <div class="faq-item">
-                        <h3>How accurate is this calculator?</h3>
-                        <p>This calculator follows the official NSC rating scale. Your final APS will be calculated by Eduvos admissions based on your official results.</p>
-                    </div>
-                </div>
-            </section>
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col lg:flex-row pt-20">
+      <!-- Text / Action Section -->
+      <section class="flex-1 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12 md:py-24 z-10">
+        <div class="max-w-2xl">
+          <div class="mb-6">
+            <span class="inline-block py-1 px-4 rounded-full bg-secondary-fixed text-on-secondary-fixed text-xs font-label font-bold uppercase tracking-widest">
+              Academic Matchmaker
+            </span>
+          </div>
+          <h1 class="font-headline text-5xl md:text-6xl lg:text-[3.5rem] font-extrabold text-primary leading-[1.1] tracking-tight mb-8">
+            Your Future at Eduvos Starts Here.
+          </h1>
+          <p class="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed mb-12 max-w-lg">
+            Calculate your APS score, explore your interests, and find the perfect programme in just a few steps.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-6">
+            <button onclick="goToStep(1)" class="cta-gradient text-white px-10 py-5 rounded-xl font-headline font-bold text-lg text-center editorial-shadow hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-3">
+              Get Started
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </div>
+          <!-- Trust Element -->
+          <div class="mt-16 flex items-center gap-6 opacity-60">
+            <div class="flex -space-x-3">
+              <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-200">
+                <img class="w-full h-full object-cover" alt="Student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsnZzf5wyGssktDF1Z_BkSV2v8_Zd0aupLsV8tdhy7DIIPMCBFAKa0Ryf5nGYnNE_4mgKd4sl8vnAhRmUEivQVuq8oRfned0wjRN_TJsOcXNe3n9j26FEQkWLztB64P8tk8GYAMciQWzYkpfc954U6uRHZlseJGeP79MxwVH0OD2UU9L0CxJgLBUf2amAgIfSInRGvIyXwg-JK9l58N12_UEbU9eOdTw4fZSRGteeNBuZrmsaaImbM59ChRCoRbqEM2rcBNaibMhwR"/>
+              </div>
+              <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-300">
+                <img class="w-full h-full object-cover" alt="Student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUDXfPoBKktf2nJKumzIUeL8ez5GtcKVSV78KoV020b829M7LTN7kxE0y86QhyrFs2BzvPnxm65SUynEC7LzcljURQVybjY2rksMLLoSKgl0qloe_kXEfla-IkfbV8SmiGyBNvZO_hlS1-DwWlZEP6w_oVqYgY3ffQLCBFHtpHSta4CXdBk41xbG2DgbuyGkGMoIKxAL6fSHbLmq_Geylx6ZhwVJ1KIgDNj2J3xXYgfzrhbiiwzEhAGOZ415FBnD-AP6qRHqN71_ct"/>
+              </div>
+              <div class="w-10 h-10 rounded-full border-2 border-white overflow-hidden bg-slate-400">
+                <img class="w-full h-full object-cover" alt="Student" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChWogPqA9VEryo-qjB1miBhjLt7R-QK8RHe23jMmk7zxV0C2AozaBUz_ilBmOKHrDycST7WSEntF1QlFf8D4ATPLr4gDzVFJWmG_wwP9vU0Z1VK62-Xze7gaIDTEepKiDaRpFA8ExfkJJsV9Lr_ZtgurF9hmtV3HhRSRbg9InI4CSV4vUm4eCvtmsPBFOTA1kd5Gd0n80hb0AfkRV8_JRotMdulAW7WbVVmX9Y9Lv2lFlQWWetkBJa6_zZsEuUYLPhopGeNKEDAXBh"/>
+              </div>
+            </div>
+            <p class="text-sm font-label text-primary font-medium">Join 10,000+ students finding their path</p>
+          </div>
         </div>
+      </section>
+
+      <!-- Imagery Section -->
+      <section class="flex-1 relative hidden lg:block overflow-hidden min-h-[600px]">
+        <div class="absolute inset-0 bg-surface-container-low transform skew-x-[-6deg] translate-x-20"></div>
+        <div class="absolute top-12 bottom-12 right-0 left-24 rounded-l-[3rem] overflow-hidden shadow-2xl z-20">
+          <img class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" alt="Students collaborating in a modern university" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRPIGS_1Anvhvg9VQ5-R2d7HEL3hm78zgXzOxk-OQPIEeNrKb0pi9fovfOImxm6dli9PxBcCb0GRaQOdHU6ZaoUHSyXGlpvulVIfB2POr9OdFBwxoVKjGvNY4FSIUQ6F-7ynltWAQlvfi7LmNfpWK9Ykx0TcgvWDTOxaVWvL6iswPAo4Ynyq3TZznDANspYzYl1LrKmspJ68grktjRp2RBJhmYoC114tHkgkrJ6mMTYZ4yWwQPyMTC9R8dFGE7nR3MFdV5J51nCnse"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+          <!-- Floating Info Card -->
+          <div class="absolute bottom-10 left-10 p-6 bg-white/90 backdrop-blur-md rounded-2xl max-w-xs editorial-shadow">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1">auto_awesome</span>
+              <span class="text-xs font-headline font-bold text-primary tracking-widest uppercase">Personalised Path</span>
+            </div>
+            <p class="text-sm text-on-surface-variant font-body leading-snug">Our algorithm matches your passions to real-world industry demands.</p>
+          </div>
+        </div>
+        <div class="absolute top-1/4 -right-12 w-48 h-48 bg-secondary/10 rounded-full blur-3xl"></div>
+      </section>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Eduvos APS Calculator. This is an unofficial calculator tool.</p>
-            <p>For official admissions information, visit <a href="https://www.eduvos.com" target="_blank">www.eduvos.com</a></p>
-        </div>
-    </footer>
+    <!-- Mobile hero image -->
+    <div class="lg:hidden w-full h-64 relative mt-12">
+      <img class="w-full h-full object-cover" alt="Modern university campus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxI8s1CNEuY6A5NtDmzHwXn3FJht-_gTjNvFqFEFS_C9F1Jh03afgbP2m7cZj_I7Jjd6uChipSZZhx5ST2H2_oC9aUy-ESqOcl0CAhq5u4onIBQRN_muLa-ehLa9ddlS8IoWIZCjR5iPBpIF1Lu23PHCQORbl6kRQMKfrWyFvMgs_4ilQ-y6ub4gRmWZNmDODpjDYSrCseWpUMO7rfQDlBrIl3ORUTBmHNerig5YxGHn2qLsxFWEokk7DN0gspqa_B0cdnh3jF--sb"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+    </div>
+    <div class="fixed top-0 right-0 -z-10 w-1/3 h-screen bg-surface-container-low/50 pointer-events-none"></div>
+  </div><!-- /step-welcome -->
 
-    <script src="script.js"></script>
+
+  <!-- ═══════════════════════════════════════════════════════
+       STEP 1 — APS CALCULATOR  (from screen (6).png)
+  ══════════════════════════════════════════════════════════ -->
+  <div id="step-aps" class="step min-h-screen">
+    <!-- Fixed Header -->
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(0,26,65,0.06)]">
+      <div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold text-primary font-headline tracking-tight">Eduvos</div>
+        <div class="flex items-center gap-4">
+          <span class="text-slate-500 font-label text-sm uppercase tracking-widest hidden sm:block">Step 1 of 3</span>
+          <button onclick="goToStep(0)" class="text-primary hover:opacity-80 transition-opacity flex items-center gap-1">
+            <span class="font-label text-sm font-semibold">Exit</span>
+            <span class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-32 pb-40 px-6 max-w-4xl mx-auto">
+      <!-- Progress Bar -->
+      <div class="mb-20 w-full">
+        <div class="flex justify-between mb-4 items-end">
+          <span class="font-label text-xs font-bold uppercase tracking-widest text-primary opacity-60">Step 1 of 3</span>
+          <span class="font-label text-xs font-bold uppercase tracking-widest text-primary">Academic Profile</span>
+        </div>
+        <div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+          <div class="h-full bg-secondary w-1/3 rounded-full relative">
+            <div class="absolute right-0 top-0 h-full w-8 bg-gradient-to-r from-transparent to-white/30"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <section class="mb-16">
+        <h1 class="font-headline text-[3.5rem] leading-[1.1] font-extrabold text-primary tracking-tight mb-6">
+          Calculate your <span class="text-secondary">APS Score.</span>
+        </h1>
+        <p class="font-body text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+          Enter your Grade 12 final results. Your Admission Point Score helps us match you with the right qualifications.
+        </p>
+      </section>
+
+      <!-- Calculator Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        <!-- Subject Input List -->
+        <div class="md:col-span-8 space-y-4">
+          <div id="subjectList" class="bg-surface-container-lowest p-6 rounded-[2rem] editorial-shadow flex flex-col gap-6">
+
+            <!-- Subject Row: Primary Language -->
+            <div class="subject-row flex flex-col md:flex-row gap-4 items-end">
+              <div class="flex-grow w-full">
+                <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Primary Language</label>
+                <input type="text" class="subj-name w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base" placeholder="e.g. English Home Language"/>
+              </div>
+              <div class="w-full md:w-28 flex-shrink-0">
+                <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mark %</label>
+                <input type="number" min="0" max="100" class="subj-pct w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-headline font-bold text-center text-lg" placeholder="0"/>
+              </div>
+              <div class="w-10 flex-shrink-0 pb-1 hidden md:flex items-center justify-center">
+                <span class="subj-rating font-label text-xs font-bold text-secondary w-6 text-center"></span>
+              </div>
+            </div>
+
+            <!-- Subject Row: Mathematics -->
+            <div class="subject-row flex flex-col md:flex-row gap-4 items-end">
+              <div class="flex-grow w-full">
+                <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mathematics / Literacy</label>
+                <input type="text" class="subj-name w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base" placeholder="e.g. Mathematics"/>
+              </div>
+              <div class="w-full md:w-28 flex-shrink-0">
+                <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mark %</label>
+                <input type="number" min="0" max="100" class="subj-pct w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-headline font-bold text-center text-lg" placeholder="0"/>
+              </div>
+              <div class="w-10 flex-shrink-0 pb-1 hidden md:flex items-center justify-center">
+                <span class="subj-rating font-label text-xs font-bold text-secondary w-6 text-center"></span>
+              </div>
+            </div>
+
+            <!-- Subject Row: Life Orientation (excluded from APS) -->
+            <div class="subject-row flex flex-col md:flex-row gap-4 items-end">
+              <div class="flex-grow w-full">
+                <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Life Orientation <span class="normal-case opacity-60">(excluded from APS)</span></label>
+                <input type="text" class="subj-name w-full bg-surface-container-low border-none rounded-xl px-4 py-4 outline-none font-body text-base opacity-60 cursor-default" value="Life Orientation" readonly/>
+              </div>
+              <div class="w-full md:w-28 flex-shrink-0">
+                <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mark %</label>
+                <input type="number" min="0" max="100" class="subj-pct lo-pct w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-headline font-bold text-center text-lg" placeholder="0"/>
+              </div>
+              <div class="w-10 flex-shrink-0 pb-1 hidden md:flex items-center justify-center">
+                <span class="font-label text-xs font-bold text-outline w-6 text-center">—</span>
+              </div>
+            </div>
+
+            <!-- Additional subject rows inserted here by JS -->
+            <div id="extraSubjects"></div>
+
+            <!-- Add Subject Button -->
+            <div class="pt-4 border-t border-surface-container-high">
+              <button onclick="addSubjectRow()" class="flex items-center gap-2 text-secondary font-bold font-body hover:opacity-80 transition-opacity">
+                <span class="material-symbols-outlined">add_circle</span>
+                Add another subject
+              </button>
+            </div>
+          </div>
+
+          <!-- Validation message -->
+          <div id="apsError" class="hidden text-error text-sm font-label px-2 flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">error</span>
+            <span id="apsErrorText"></span>
+          </div>
+        </div>
+
+        <!-- Sticky Sidebar -->
+        <div class="md:col-span-4 sticky top-32">
+          <div class="bg-primary text-white p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-10 -top-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
+            <h3 class="font-label text-xs font-bold uppercase tracking-[0.2em] mb-8 text-secondary-container">Your Live Score</h3>
+            <div class="flex flex-col items-center">
+              <span id="liveAps" class="font-headline text-8xl font-extrabold leading-none mb-2">0</span>
+              <span class="font-label text-sm uppercase tracking-widest opacity-60">Current APS</span>
+            </div>
+            <div class="mt-10 pt-8 border-t border-white/10 space-y-4">
+              <div class="flex justify-between items-center text-sm">
+                <span class="opacity-70">Subjects Entered</span>
+                <span id="subjCount" class="font-bold">0 of 2</span>
+              </div>
+              <div class="flex justify-between items-center text-sm">
+                <span class="opacity-70">Degree Eligibility</span>
+                <span id="eligStatus" class="font-bold text-secondary-container">Pending...</span>
+              </div>
+            </div>
+          </div>
+          <!-- Guidance Note -->
+          <div class="mt-8 px-4 flex gap-4">
+            <span class="material-symbols-outlined text-secondary">info</span>
+            <p class="font-body text-sm text-on-surface-variant leading-relaxed">
+              Eduvos calculates APS using your top 6 subjects, excluding Life Orientation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Nav -->
+    <nav class="fixed bottom-0 left-0 w-full flex justify-between items-center px-10 py-6 bg-[#f4f3f3] rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,26,65,0.04)] z-50">
+      <button onclick="goToStep(0)" class="flex items-center gap-2 text-primary px-6 py-4 font-headline font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-lg">arrow_back</span> Back
+      </button>
+      <button onclick="validateAndGoStep2()" class="flex items-center gap-2 cta-gradient text-white px-8 py-4 rounded-xl shadow-lg font-headline font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all">
+        Next <span class="material-symbols-outlined text-lg">arrow_forward</span>
+      </button>
+    </nav>
+
+    <!-- Decorative background -->
+    <div class="fixed top-0 right-0 -z-10 w-1/3 h-full overflow-hidden pointer-events-none opacity-40">
+      <img alt="" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ8Og4Q9zPGZaeqQkrofx0baqr4diZdVF5L61AvV017eU1mOEefcZZ-SjcDLgpp40NcFd7PoV56YMkVhbvOwbCzTDSVzy15Ml2wQOoSwAKtE7VXoPeSXjJ4BrhZ3Mj_jjtYMP3izX8uH9MD21dQG05e-w6GnOvUtKJtu7w3wtKsKdJl_dGsGP74u-R3527NaveZd8owzpbqtWnCo1p4E8fzkSLfXLN-DqWdJtSXrQewWp0zFgraiRzmRuktZCWgBXoBpwtmEo3_S6h"/>
+    </div>
+  </div><!-- /step-aps -->
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       STEP 2 — INTERESTS  (from screen.png)
+  ══════════════════════════════════════════════════════════ -->
+  <div id="step-interests" class="step min-h-screen">
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(0,26,65,0.06)]">
+      <div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold text-primary font-headline tracking-tight">Eduvos</div>
+        <div class="flex items-center gap-6">
+          <span class="text-slate-500 font-label text-sm uppercase tracking-widest hidden sm:block">Step 2 of 3</span>
+          <button onclick="goToStep(0)" class="text-primary hover:opacity-80 transition-opacity flex items-center gap-1">
+            <span class="font-label text-sm font-semibold">Exit</span>
+            <span class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-32 pb-40 px-6 max-w-7xl mx-auto">
+      <!-- Progress Bar -->
+      <div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden mb-16 max-w-3xl">
+        <div class="h-full bg-secondary w-[66%] relative">
+          <div class="absolute right-0 top-0 h-full w-4 bg-white/30 blur-sm"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <!-- Left Column -->
+        <div class="lg:col-span-5">
+          <h1 class="font-headline text-primary text-5xl lg:text-6xl mb-8 leading-[1.1] font-extrabold tracking-tight" style="letter-spacing:-0.02em">
+            What sparks your<br/>curiosity?
+          </h1>
+          <p class="text-on-surface-variant text-lg lg:text-xl leading-relaxed max-w-md">
+            Select the fields that resonate with your goals. Our Academic Concierge will curate a path specifically for your future.
+          </p>
+          <div class="mt-12 flex flex-wrap gap-3" id="interestChips">
+            <button onclick="toggleInterest(this,'Creative Arts')" class="chip bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-outline-variant">
+              <span class="material-symbols-outlined text-lg">palette</span> Creative Arts
+            </button>
+            <button onclick="toggleInterest(this,'Technology')" class="chip bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-outline-variant">
+              <span class="material-symbols-outlined text-lg">terminal</span> Technology
+            </button>
+            <button onclick="toggleInterest(this,'Business')" class="chip bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-outline-variant">
+              <span class="material-symbols-outlined text-lg">trending_up</span> Business
+            </button>
+            <button onclick="toggleInterest(this,'Humanities')" class="chip bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-outline-variant">
+              <span class="material-symbols-outlined text-lg">psychology</span> Humanities
+            </button>
+            <button onclick="toggleInterest(this,'Applied Science')" class="chip bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-outline-variant">
+              <span class="material-symbols-outlined text-lg">science</span> Applied Science
+            </button>
+            <button onclick="toggleInterest(this,'Education')" class="chip bg-surface-container-lowest text-primary px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:bg-surface-container-low transition-all border border-outline-variant">
+              <span class="material-symbols-outlined text-lg">school</span> Education
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Course Cards -->
+        <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_40px_40px_-15px_rgba(0,26,65,0.04)] hover:shadow-[0_40px_40px_-15px_rgba(0,26,65,0.08)] transition-all group flex flex-col h-full">
+            <div class="mb-6 flex justify-between items-start">
+              <div class="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">brush</span>
+              </div>
+              <span class="bg-primary/10 text-primary font-label text-[10px] uppercase font-bold px-3 py-1 rounded-full tracking-widest">Degree</span>
+            </div>
+            <h3 class="font-headline text-2xl text-primary mb-3">BA in Graphic Design</h3>
+            <p class="text-on-surface-variant font-body mb-8 text-sm leading-relaxed">Master visual communication and digital storytelling through industry-standard design principles.</p>
+            <div class="mt-auto pt-4 flex items-center text-secondary font-bold text-sm gap-2">
+              View Details <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_40px_40px_-15px_rgba(0,26,65,0.04)] hover:shadow-[0_40px_40px_-15px_rgba(0,26,65,0.08)] transition-all group flex flex-col h-full">
+            <div class="mb-6 flex justify-between items-start">
+              <div class="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">terminal</span>
+              </div>
+              <span class="bg-primary/10 text-primary font-label text-[10px] uppercase font-bold px-3 py-1 rounded-full tracking-widest">Degree</span>
+            </div>
+            <h3 class="font-headline text-2xl text-primary mb-3">BSc in IT</h3>
+            <p class="text-on-surface-variant font-body mb-8 text-sm leading-relaxed">Build the digital future with a comprehensive foundation in software development and systems.</p>
+            <div class="mt-auto pt-4 flex items-center text-secondary font-bold text-sm gap-2">
+              View Details <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </div>
+          </div>
+          <!-- Featured Card -->
+          <div class="md:col-span-2 bg-gradient-to-br from-primary to-primary-container p-10 rounded-[2.5rem] text-white flex flex-col md:flex-row gap-8 items-center relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-64 h-64 bg-white/5 rounded-full blur-3xl"></div>
+            <div class="z-10 flex-1">
+              <div class="mb-4 inline-block bg-secondary px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Premium Choice</div>
+              <h3 class="font-headline text-3xl mb-4 leading-tight">Bachelor of Commerce<br/>in Business Management</h3>
+              <p class="text-on-primary-container/80 text-base max-w-md">The ultimate intersection of strategy and execution for the next generation of business leaders.</p>
+            </div>
+            <div class="z-10 shrink-0">
+              <div class="w-32 h-32 bg-white/10 backdrop-blur-md rounded-[2rem] flex items-center justify-center">
+                <span class="material-symbols-outlined text-5xl" style="font-variation-settings:'FILL' 1">auto_awesome</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <nav class="fixed bottom-0 left-0 w-full flex justify-between items-center px-10 py-6 bg-[#f4f3f3] rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,26,65,0.04)] z-50">
+      <button onclick="goToStep(1)" class="flex items-center gap-2 text-primary px-6 py-4 font-headline font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-lg">arrow_back</span> Back
+      </button>
+      <button onclick="goToStep(3)" class="flex items-center gap-2 cta-gradient text-white px-8 py-4 rounded-xl shadow-lg font-headline font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all">
+        Next <span class="material-symbols-outlined text-lg">arrow_forward</span>
+      </button>
+    </nav>
+
+    <div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none overflow-hidden">
+      <div class="absolute top-[20%] -left-[10%] w-[40rem] h-[40rem] bg-primary/2 rounded-full blur-[100px]"></div>
+      <div class="absolute bottom-[10%] -right-[5%] w-[30rem] h-[30rem] bg-secondary/5 rounded-full blur-[100px]"></div>
+    </div>
+  </div><!-- /step-interests -->
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       STEP 3 — CONTACT DETAILS
+  ══════════════════════════════════════════════════════════ -->
+  <div id="step-contact" class="step min-h-screen">
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(0,26,65,0.06)]">
+      <div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold text-primary font-headline tracking-tight">Eduvos</div>
+        <div class="flex items-center gap-6">
+          <span class="text-slate-500 font-label text-sm uppercase tracking-widest hidden sm:block">Step 3 of 3</span>
+          <button onclick="goToStep(0)" class="text-primary hover:opacity-80 transition-opacity flex items-center gap-1">
+            <span class="font-label text-sm font-semibold">Exit</span>
+            <span class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="pt-32 pb-40 px-6 max-w-4xl mx-auto">
+      <!-- Progress Bar -->
+      <div class="mb-20 w-full">
+        <div class="flex justify-between mb-4 items-end">
+          <span class="font-label text-xs font-bold uppercase tracking-widest text-primary opacity-60">Step 3 of 3</span>
+          <span class="font-label text-xs font-bold uppercase tracking-widest text-primary">Your Details</span>
+        </div>
+        <div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+          <div class="h-full bg-secondary w-full rounded-full"></div>
+        </div>
+      </div>
+
+      <section class="mb-12">
+        <h1 class="font-headline text-[3rem] leading-[1.1] font-extrabold text-primary tracking-tight mb-6">
+          Almost there — <span class="text-secondary">tell us about yourself.</span>
+        </h1>
+        <p class="font-body text-xl text-on-surface-variant max-w-2xl leading-relaxed">
+          We'll use these details to send you personalised programme recommendations based on your APS and interests.
+        </p>
+      </section>
+
+      <!-- Lead Capture Form -->
+      <div class="bg-surface-container-lowest p-8 rounded-[2rem] editorial-shadow">
+        <form id="leadForm" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base" placeholder="Your first name"/>
+            </div>
+            <div>
+              <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base" placeholder="Your last name"/>
+            </div>
+            <div>
+              <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Email Address *</label>
+              <input type="email" id="email" name="email" required class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base" placeholder="you@example.com"/>
+            </div>
+            <div>
+              <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base" placeholder="0XX XXX XXXX"/>
+            </div>
+            <div class="md:col-span-2">
+              <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Preferred Campus</label>
+              <select id="campus" name="campus" class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base">
+                <option value="">Select a campus</option>
+                <option value="pretoria">Pretoria</option>
+                <option value="midrand">Midrand</option>
+                <option value="johannesburg">Johannesburg</option>
+                <option value="cape-town">Cape Town</option>
+                <option value="durban">Durban</option>
+                <option value="port-elizabeth">Port Elizabeth (Gqeberha)</option>
+                <option value="online">Online Learning</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 pt-2">
+            <input type="checkbox" id="consent" name="consent" class="mt-1 rounded text-secondary focus:ring-secondary" required/>
+            <label for="consent" class="font-body text-sm text-on-surface-variant leading-relaxed">
+              I consent to Eduvos contacting me about educational opportunities and programmes that match my profile. *
+            </label>
+          </div>
+          <div id="contactError" class="hidden text-error text-sm font-label flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">error</span>
+            <span id="contactErrorText"></span>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <nav class="fixed bottom-0 left-0 w-full flex justify-between items-center px-10 py-6 bg-[#f4f3f3] rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,26,65,0.04)] z-50">
+      <button onclick="goToStep(2)" class="flex items-center gap-2 text-primary px-6 py-4 font-headline font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-lg">arrow_back</span> Back
+      </button>
+      <button onclick="submitAndShowResults()" class="flex items-center gap-2 cta-gradient text-white px-8 py-4 rounded-xl shadow-lg font-headline font-bold uppercase tracking-widest text-xs hover:brightness-110 active:scale-95 transition-all">
+        Submit <span class="material-symbols-outlined text-lg">check</span>
+      </button>
+    </nav>
+  </div><!-- /step-contact -->
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       STEP 4 — RESULTS / THANK YOU
+  ══════════════════════════════════════════════════════════ -->
+  <div id="step-results" class="step min-h-screen">
+    <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-[0_40px_40px_-15px_rgba(0,26,65,0.06)]">
+      <div class="flex justify-between items-center px-8 h-20 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold text-primary font-headline tracking-tight">Eduvos</div>
+      </div>
+    </header>
+
+    <main class="pt-32 pb-24 px-6 max-w-4xl mx-auto">
+      <!-- Hero Score Card -->
+      <div class="bg-gradient-to-br from-primary to-primary-container rounded-[2.5rem] p-12 text-white mb-10 relative overflow-hidden">
+        <div class="absolute -right-16 -top-16 w-72 h-72 bg-white/5 rounded-full blur-3xl"></div>
+        <div class="relative z-10">
+          <div class="mb-2 inline-block bg-secondary-container/30 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-secondary-container">Your APS Result</div>
+          <div class="flex items-end gap-6 mt-6 mb-4">
+            <span id="finalAps" class="font-headline text-9xl font-extrabold leading-none">0</span>
+            <div class="pb-4">
+              <span class="font-label text-sm uppercase tracking-widest opacity-60 block">out of 42</span>
+              <span id="finalElig" class="font-headline text-xl font-bold mt-1 block text-secondary-container">Calculating...</span>
+            </div>
+          </div>
+          <div id="finalBreakdown" class="mt-6 text-sm opacity-80 font-body leading-relaxed"></div>
+        </div>
+      </div>
+
+      <!-- Thank You Card -->
+      <div class="bg-surface-container-lowest p-8 rounded-[2rem] editorial-shadow mb-8">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-12 h-12 bg-secondary/10 rounded-2xl flex items-center justify-center text-secondary">
+            <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">check_circle</span>
+          </div>
+          <div>
+            <h2 class="font-headline text-2xl text-primary font-bold">Thank You!</h2>
+            <p class="text-on-surface-variant text-sm font-body" id="thankYouName">Your profile has been received.</p>
+          </div>
+        </div>
+        <p class="text-on-surface-variant font-body leading-relaxed">
+          An Eduvos admissions counsellor will be in touch shortly with personalised programme recommendations based on your APS score and interests.
+        </p>
+      </div>
+
+      <!-- Next Steps -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div class="bg-surface-container-lowest p-6 rounded-[1.5rem] editorial-shadow flex flex-col gap-3">
+          <span class="material-symbols-outlined text-secondary text-3xl">school</span>
+          <h3 class="font-headline text-lg text-primary font-bold">Explore Programmes</h3>
+          <p class="text-on-surface-variant text-sm font-body">Browse all Eduvos qualifications online.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-6 rounded-[1.5rem] editorial-shadow flex flex-col gap-3">
+          <span class="material-symbols-outlined text-secondary text-3xl">location_on</span>
+          <h3 class="font-headline text-lg text-primary font-bold">Find a Campus</h3>
+          <p class="text-on-surface-variant text-sm font-body">Visit one of our campuses across South Africa.</p>
+        </div>
+        <div class="bg-surface-container-lowest p-6 rounded-[1.5rem] editorial-shadow flex flex-col gap-3">
+          <span class="material-symbols-outlined text-secondary text-3xl">how_to_reg</span>
+          <h3 class="font-headline text-lg text-primary font-bold">Apply Now</h3>
+          <p class="text-on-surface-variant text-sm font-body">Start your official application on eduvos.com.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="https://www.eduvos.com" target="_blank" class="cta-gradient text-white px-8 py-4 rounded-xl font-headline font-bold text-sm text-center editorial-shadow hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2">
+          Visit Eduvos.com <span class="material-symbols-outlined text-lg">open_in_new</span>
+        </a>
+        <button onclick="startOver()" class="border border-outline-variant text-primary px-8 py-4 rounded-xl font-headline font-bold text-sm hover:bg-surface-container-low transition-all flex items-center justify-center gap-2">
+          Calculate Again <span class="material-symbols-outlined text-lg">refresh</span>
+        </button>
+      </div>
+    </main>
+  </div><!-- /step-results -->
+
+
+  <script>
+    // ─── State ─────────────────────────────────────────────────────────────
+    let currentStep = 0;
+    let apsScore = 0;
+    let selectedInterests = [];
+
+    // ─── Step Navigation ───────────────────────────────────────────────────
+    const stepIds = ['step-welcome','step-aps','step-interests','step-contact','step-results'];
+
+    function goToStep(n) {
+      document.getElementById(stepIds[currentStep]).classList.remove('active');
+      currentStep = n;
+      const el = document.getElementById(stepIds[currentStep]);
+      el.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (n === 1) recalcLiveAps();
+    }
+
+    // ─── APS Calculation ───────────────────────────────────────────────────
+    function pctToRating(pct) {
+      if (pct >= 80) return 7;
+      if (pct >= 70) return 6;
+      if (pct >= 60) return 5;
+      if (pct >= 50) return 4;
+      if (pct >= 40) return 3;
+      if (pct >= 30) return 2;
+      return 1;
+    }
+
+    function getEligibilityText(score, short) {
+      if (score >= 28) return short ? 'Bachelor\'s Degree ✓' : '🎉 Excellent — qualifies for most Bachelor\'s degrees';
+      if (score >= 23) return short ? 'Bachelor\'s Degree ✓' : '✓ Qualifies for Bachelor\'s degree programmes';
+      if (score >= 18) return short ? 'Diploma ✓' : '✓ Qualifies for Diploma programmes';
+      if (score > 0)   return short ? 'Certificate / Foundation' : 'Contact admissions to explore your options';
+      return 'Pending...';
+    }
+
+    function recalcLiveAps() {
+      const rows = document.querySelectorAll('#step-aps .subject-row');
+      let ratings = [];
+      let filledNonLO = 0;
+      let totalNonLO = 0;
+
+      rows.forEach((row, idx) => {
+        const nameInput = row.querySelector('.subj-name');
+        const pctInput  = row.querySelector('.subj-pct');
+        const ratingEl  = row.querySelector('.subj-rating');
+        const isLO = pctInput && pctInput.classList.contains('lo-pct');
+
+        if (!pctInput) return;
+        if (!isLO) totalNonLO++;
+
+        const val = pctInput.value.trim();
+        if (val === '' || val === null) {
+          if (ratingEl && !isLO) ratingEl.textContent = '';
+          return;
+        }
+
+        const pct = parseFloat(val);
+        if (isNaN(pct)) return;
+
+        if (!isLO) {
+          filledNonLO++;
+          const r = pctToRating(pct);
+          if (ratingEl) ratingEl.textContent = r;
+          ratings.push(r);
+        }
+      });
+
+      // Best 6
+      ratings.sort((a, b) => b - a);
+      const best6 = ratings.slice(0, 6);
+      apsScore = best6.reduce((s, r) => s + r, 0);
+
+      document.getElementById('liveAps').textContent = apsScore;
+      document.getElementById('subjCount').textContent = `${filledNonLO} of ${totalNonLO}`;
+
+      document.getElementById('eligStatus').textContent = getEligibilityText(apsScore, true);
+    }
+
+    // ─── Add Extra Subject Row ─────────────────────────────────────────────
+    let extraCount = 0;
+    function addSubjectRow() {
+      extraCount++;
+      const container = document.getElementById('extraSubjects');
+      const div = document.createElement('div');
+      div.className = 'subject-row flex flex-col md:flex-row gap-4 items-end';
+      div.innerHTML = `
+        <div class="flex-grow w-full">
+          <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Subject ${3 + extraCount}</label>
+          <input type="text" class="subj-name w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-body text-base" placeholder="Subject name"/>
+        </div>
+        <div class="w-full md:w-28 flex-shrink-0">
+          <label class="font-label text-xs font-bold uppercase text-on-surface-variant mb-2 block">Mark %</label>
+          <input type="number" min="0" max="100" class="subj-pct w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-secondary transition-all outline-none font-headline font-bold text-center text-lg" placeholder="0"/>
+        </div>
+        <div class="w-10 flex-shrink-0 pb-1 hidden md:flex items-center justify-center">
+          <span class="subj-rating font-label text-xs font-bold text-secondary w-6 text-center"></span>
+        </div>`;
+      container.appendChild(div);
+      // Wire up live recalc
+      div.querySelector('.subj-pct').addEventListener('input', recalcLiveAps);
+    }
+
+    // ─── Validate APS step before proceeding ──────────────────────────────
+    function validateAndGoStep2() {
+      const rows = document.querySelectorAll('#step-aps .subject-row');
+      let validRatings = [];
+
+      rows.forEach(row => {
+        const pctInput = row.querySelector('.subj-pct');
+        const isLO = pctInput && pctInput.classList.contains('lo-pct');
+        if (!pctInput || isLO) return;
+        const val = pctInput.value.trim();
+        if (val === '') return;
+        const pct = parseFloat(val);
+        if (!isNaN(pct) && pct >= 0 && pct <= 100) {
+          validRatings.push(pctToRating(pct));
+        }
+      });
+
+      const errEl = document.getElementById('apsError');
+      const errTxt = document.getElementById('apsErrorText');
+
+      if (validRatings.length < 6) {
+        errEl.classList.remove('hidden');
+        errTxt.textContent = 'Please enter at least 6 subjects (excluding Life Orientation) to continue.';
+        errEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
+      }
+
+      errEl.classList.add('hidden');
+      goToStep(2);
+    }
+
+    // ─── Interest Toggle ───────────────────────────────────────────────────
+    function toggleInterest(btn, interest) {
+      btn.classList.toggle('selected');
+      if (btn.classList.contains('selected')) {
+        if (!selectedInterests.includes(interest)) selectedInterests.push(interest);
+      } else {
+        selectedInterests = selectedInterests.filter(i => i !== interest);
+      }
+    }
+
+    // ─── Submit Lead Form & Show Results ──────────────────────────────────
+    function submitAndShowResults() {
+      const form = document.getElementById('leadForm');
+      const errEl = document.getElementById('contactError');
+      const errTxt = document.getElementById('contactErrorText');
+
+      if (!form.checkValidity()) {
+        errEl.classList.remove('hidden');
+        errTxt.textContent = 'Please fill in all required fields.';
+        form.reportValidity();
+        return;
+      }
+
+      const consent = document.getElementById('consent');
+      if (!consent.checked) {
+        errEl.classList.remove('hidden');
+        errTxt.textContent = 'Please provide consent to be contacted.';
+        return;
+      }
+
+      errEl.classList.add('hidden');
+
+      // Build lead data
+      const leadData = {
+        firstName: document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        campus: document.getElementById('campus').value,
+        apsScore: apsScore,
+        interests: selectedInterests,
+        timestamp: new Date().toISOString()
+      };
+
+      // Persist to localStorage
+      try {
+        const leads = JSON.parse(localStorage.getItem('eduvosLeads') || '[]');
+        leads.push(leadData);
+        localStorage.setItem('eduvosLeads', JSON.stringify(leads));
+        localStorage.setItem('lastCalculation', JSON.stringify({ apsScore, timestamp: leadData.timestamp }));
+      } catch (e) { /* ignore */ }
+
+      console.log('%cEduvos lead captured', 'color:#15305d;font-weight:bold', leadData);
+
+      // Populate results step
+      document.getElementById('finalAps').textContent = apsScore;
+      document.getElementById('finalElig').textContent = getEligibilityText(apsScore, false);
+      document.getElementById('thankYouName').textContent =
+        `Thank you, ${leadData.firstName}! Your profile has been received.`;
+
+      // Build breakdown
+      const rows = document.querySelectorAll('#step-aps .subject-row');
+      let subjects = [];
+      rows.forEach(row => {
+        const nameInput = row.querySelector('.subj-name');
+        const pctInput = row.querySelector('.subj-pct');
+        const isLO = pctInput && pctInput.classList.contains('lo-pct');
+        if (!pctInput || isLO) return;
+        const val = pctInput.value.trim();
+        if (val === '') return;
+        const pct = parseFloat(val);
+        if (!isNaN(pct)) {
+          const name = nameInput ? (nameInput.value.trim() || 'Subject') : 'Subject';
+          subjects.push({ name, pct, rating: pctToRating(pct) });
+        }
+      });
+      subjects.sort((a, b) => b.rating - a.rating);
+      const best6 = subjects.slice(0, 6);
+      const breakdownHtml = best6.map(s =>
+        `<span class="inline-block mr-4">${s.name}: <strong>${s.pct}%</strong> → Rating <strong>${s.rating}</strong></span>`
+      ).join('');
+      document.getElementById('finalBreakdown').innerHTML = 'Best 6 subjects used: ' + breakdownHtml;
+
+      goToStep(4);
+    }
+
+    // ─── Start Over ────────────────────────────────────────────────────────
+    function startOver() {
+      // Reset subjects
+      document.getElementById('extraSubjects').innerHTML = '';
+      extraCount = 0;
+      selectedInterests = [];
+      apsScore = 0;
+
+      document.querySelectorAll('#step-aps .subj-pct, #step-aps .subj-name').forEach(el => {
+        if (!el.readOnly) el.value = '';
+      });
+      document.querySelectorAll('#step-aps .subj-rating').forEach(el => el.textContent = '');
+      document.getElementById('liveAps').textContent = '0';
+      document.getElementById('eligStatus').textContent = 'Pending...';
+      document.getElementById('leadForm').reset();
+      document.querySelectorAll('.chip.selected').forEach(c => c.classList.remove('selected'));
+
+      goToStep(0);
+    }
+
+    // ─── Wire up real-time APS on existing inputs ─────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('#step-aps .subj-pct').forEach(el => {
+        el.addEventListener('input', recalcLiveAps);
+      });
+
+      // Expose admin helpers in console
+      window.viewLeads = () => {
+        const leads = JSON.parse(localStorage.getItem('eduvosLeads') || '[]');
+        console.table(leads);
+        return leads;
+      };
+      window.exportLeads = () => {
+        const leads = window.viewLeads();
+        const blob = new Blob([JSON.stringify(leads, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `eduvos-leads-${new Date().toISOString().split('T')[0]}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+      window.clearLeads = () => {
+        if (confirm('Clear all leads? This cannot be undone.')) {
+          localStorage.removeItem('eduvosLeads');
+        }
+      };
+
+      console.log('%cEduvos Guided Matchmaker Loaded', 'color:#15305d;font-size:16px;font-weight:bold');
+      console.log('%cAdmin: viewLeads() | exportLeads() | clearLeads()', 'color:#666;font-style:italic');
+    });
+  </script>
 </body>
 </html>
