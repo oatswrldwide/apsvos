@@ -39,7 +39,7 @@ class APSCalculator {
         if (percent >= 50 && percent < 60) return 4;
         if (percent >= 40 && percent < 50) return 3;
         if (percent >= 30 && percent < 40) return 2;
-        if (percent >= 0 && percent < 30) return 1;
+        if (percent >= 0 && percent < 30) return 0;
         
         return 0;
     }
